@@ -7,6 +7,7 @@
 //
 
 #import "TimerViewController.h"
+#import "Timer.h"
 
 @interface TimerViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *timerLabel;
@@ -27,8 +28,48 @@
 }
 - (IBAction)timerButtonTapped:(id)sender {
     
+    [[Timer sharedInstance]startTimer];
+    self.timerButton.enabled = NO;
+    
 }
 
+- (void)registerForSecondTickNotification:(NSNotification *)notification {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTimerLabel) name:secondTickNotification object:nil];
+    
+}
+//custome init method
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        //here is where we initiate or instance or we do anything we need to
+        [self  registerForNotifications];
+    }
+    return self;
+}
+
+
+
+
+- (void)updateTimerLabel {
+    
+    NSInteger minutes =[Timer sharedInstance].minutes;
+    NSInteger seconds = [Timer sharedInstance].seconds;
+}
+
+- (void)registerForNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTimerLabel) name:secondTickNotification object:nil];
+    
+}
+
+- (void)unregisterForNotifications {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+- (void)dealloc {
+    [self unregisterForNotifications];
+}
 /*
 #pragma mark - Navigation
 

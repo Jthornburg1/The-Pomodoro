@@ -16,6 +16,17 @@
 
 @implementation Timer
 
+
++(Timer *)sharedInstance{
+    static Timer *sharedInstance = nil;
+static dispatch_once_t onceToken;
+dispatch_once(&onceToken, ^{
+    sharedInstance = [[Timer alloc]init];
+});
+    return sharedInstance;
+}
+
+
 -(void)startTimer {
     self.isOn = YES;
     [self checkActive];
