@@ -20,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self registerForNotifications];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,17 +35,6 @@
 }
 
 //custome init method
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        //here is where we initiate or instance or we do anything we need to
-        [self  registerForNotifications];
-    }
-    return self;
-}
-
-
 
 
 - (void)updateTimerLabel {
@@ -54,10 +44,6 @@
 
 }
 
-- (void)registerForNotifications {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTimerLabel) name:secondTickNotification object:nil];
-    
-}
 
 - (NSString *)timerStringWithMinutes:(NSInteger)minutes andSeconds:(NSInteger)seconds
 {
@@ -83,6 +69,16 @@
     
     return timerString;
 }
+#pragma mark -notifications
+
+
+
+
+- (void)registerForNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTimerLabel) name:secondTickNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newRound) name:newRoundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newRound) name:timerCompleteNotification object:nil];
+}
 
 - (void)unregisterForNotifications {
     
@@ -90,6 +86,11 @@
 }
 - (void)dealloc {
     [self unregisterForNotifications];
+}
+
+-(void)newRound {
+    [self updateTimerLabel];
+    self.timerButton.enabled = YES;
 }
 /*
 #pragma mark - Navigation

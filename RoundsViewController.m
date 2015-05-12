@@ -8,6 +8,7 @@
 
 #import "RoundsViewController.h"
 #import "RoundsController.h"
+#import "TimerViewController.h"
 #import "Timer.h"
 
 static NSString *cellIdentifier = @"cellIdentifier";
@@ -57,11 +58,60 @@ static NSString *cellIdentifier = @"cellIdentifier";
 #pragma mark-tableView delegateMethod
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
+
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     [RoundsController sharedInstance].currentRound = indexPath.row;
     [[RoundsController sharedInstance] roundSelected];
     [[Timer sharedInstance] cancelTimer];
+}
+
+#pragma mark - Notifications
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        //here is where we initiate or instance or we do anything we need to
+        [self  registerForNotifications];
+    }
+    return self;
+}
+
+- (void)registerForNotifications {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(roundComplete) name:timerCompleteNotification object:nil];
+}
+
+- (void)unregisterForNotifications {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     
 }
+
+- (void)dealloc {
+    
+    [self unregisterForNotifications];
+}
+
+
+-(void)roundComplete {
+    if ([RoundsController sharedInstance].currentRound < [RoundsController sharedInstance].roundTimes.count - 1) {
+        [RoundsController sharedInstance].currentRound++;
+        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:[RoundsController sharedInstance].currentRound inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
+        [[RoundsController sharedInstance] roundSelected];
+    } else {
+        [RoundsController sharedInstance].currentRound = 0;
+        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:[RoundsController sharedInstance].currentRound inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
+        [[RoundsController sharedInstance] roundSelected];
+    }
+}
+
+
+
+
+
+
+
+
+
+
 @end

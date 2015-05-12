@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-static NSString *secondTickNotification;
-static NSString *timerCompleteNotification;
-static NSString *newRoundNotification;
+static NSString *secondTickNotification = @"secondTickNotification";
+static NSString *timerCompleteNotification = @"timerCompleteNotication";
+static NSString *newRoundNotification = @"newRoundNotification";
 
 @interface Timer : NSObject
 

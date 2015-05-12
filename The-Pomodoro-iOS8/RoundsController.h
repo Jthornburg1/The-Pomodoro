@@ -12,7 +12,6 @@
 @property (nonatomic,strong,readonly) NSArray *roundTimes;
 @property (nonatomic) NSInteger currentRound;
 
-
 + (instancetype)sharedInstance;
 
 - (NSArray *)roundTimes;
