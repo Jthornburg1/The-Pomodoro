@@ -17,6 +17,7 @@
 		87D4376D1B015207001F8FC8 /* RoundsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D4376C1B015207001F8FC8 /* RoundsViewController.m */; };
 		87D437701B0156CC001F8FC8 /* RoundsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D4376F1B0156CC001F8FC8 /* RoundsController.m */; };
 		87D437731B0159FF001F8FC8 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D437721B0159FF001F8FC8 /* Timer.m */; };
+		87D4377E1B02A10F001F8FC8 /* AppearanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D4377D1B02A10F001F8FC8 /* AppearanceManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,8 @@
 		87D4376F1B0156CC001F8FC8 /* RoundsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundsController.m; sourceTree = "<group>"; };
 		87D437711B0159FF001F8FC8 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		87D437721B0159FF001F8FC8 /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
+		87D4377C1B02A10F001F8FC8 /* AppearanceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppearanceManager.h; sourceTree = "<group>"; };
+		87D4377D1B02A10F001F8FC8 /* AppearanceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppearanceManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +102,8 @@
 				87D437721B0159FF001F8FC8 /* Timer.m */,
 				87D4376B1B015207001F8FC8 /* RoundsViewController.h */,
 				87D4376C1B015207001F8FC8 /* RoundsViewController.m */,
+				87D4377C1B02A10F001F8FC8 /* AppearanceManager.h */,
+				87D4377D1B02A10F001F8FC8 /* AppearanceManager.m */,
 				87D437661B0151F1001F8FC8 /* TimerViewController.h */,
 				87D437671B0151F1001F8FC8 /* TimerViewController.m */,
 				87D437681B0151F1001F8FC8 /* TimerViewController.xib */,
@@ -237,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87D437691B0151F1001F8FC8 /* TimerViewController.m in Sources */,
+				87D4377E1B02A10F001F8FC8 /* AppearanceManager.m in Sources */,
 				34FB5C171A95A83100E3E2F8 /* AppDelegate.m in Sources */,
 				34FB5C141A95A83100E3E2F8 /* main.m in Sources */,
 				87D437731B0159FF001F8FC8 /* Timer.m in Sources */,
