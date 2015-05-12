@@ -15,5 +15,8 @@
 
 + (instancetype)sharedInstance;
 
-- (NSArray *) roundTimes;
+- (NSArray *)roundTimes;
+
+- (void)roundSelected;
+
 @end

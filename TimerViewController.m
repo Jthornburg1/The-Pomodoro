@@ -33,11 +33,6 @@
     
 }
 
-- (void)registerForSecondTickNotification:(NSNotification *)notification {
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTimerLabel) name:secondTickNotification object:nil];
-    
-}
 //custome init method
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     
@@ -54,13 +49,39 @@
 
 - (void)updateTimerLabel {
     
-    NSInteger minutes =[Timer sharedInstance].minutes;
-    NSInteger seconds = [Timer sharedInstance].seconds;
+
+    self.timerLabel.text = [self timerStringWithMinutes:[Timer sharedInstance].minutes andSeconds:[Timer sharedInstance].seconds];
+
 }
 
 - (void)registerForNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTimerLabel) name:secondTickNotification object:nil];
     
+}
+
+- (NSString *)timerStringWithMinutes:(NSInteger)minutes andSeconds:(NSInteger)seconds
+{
+    NSString *timerString;
+    
+    if (minutes >= 10)
+    {
+        timerString = [NSString stringWithFormat:@"%li:", (long)minutes];
+    }
+    else
+    {
+        timerString = [NSString stringWithFormat:@"0%li:", (long)minutes];
+    }
+    
+    if (seconds >= 10)
+    {
+        timerString = [timerString stringByAppendingString:[NSString stringWithFormat:@"%li", (long)seconds]];
+    }
+    else
+    {
+        timerString = [timerString stringByAppendingString:[NSString stringWithFormat:@"0%li", (long)seconds]];
+    }
+    
+    return timerString;
 }
 
 - (void)unregisterForNotifications {

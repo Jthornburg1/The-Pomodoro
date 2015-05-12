@@ -7,6 +7,7 @@
 //
 
 #import "RoundsController.h"
+#import "Timer.h"
 
 @interface RoundsController ()
 @property (nonatomic,strong) NSArray *roundTimes;
@@ -29,6 +30,13 @@ dispatch_once(&onceToken, ^{
 - (NSArray *) roundTimes {
     
     return @[@25, @5, @25, @5, @25, @5, @25, @15];
+}
+
+- (void)roundSelected {
+    [Timer sharedInstance].minutes = [[self roundTimes][self.currentRound] integerValue];
+    [Timer sharedInstance].seconds = 0;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:newRoundNotification object:nil];
 }
 
 //In the implementaion file, override the roundTimes getter method and return this array
