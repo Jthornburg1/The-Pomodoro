@@ -20,4 +20,6 @@ static NSString *newRoundNotification = @"newRoundNotification";
 + (Timer *)sharedInstance;
 - (void)startTimer;
 - (void)cancelTimer;
+- (void)prepareForBackground;
+- (void)loadFromBackground;
 @end

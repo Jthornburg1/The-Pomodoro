@@ -7,10 +7,12 @@
 //
 
 #import "Timer.h"
+@import  UIKit;
 
 @interface Timer ()
 
 @property (nonatomic, assign) BOOL isOn;
+@property (nonatomic, strong) NSDate *expirationDate;
 
 @end
 
@@ -22,9 +24,7 @@
 static dispatch_once_t onceToken;
 dispatch_once(&onceToken, ^{
     sharedInstance = [[Timer alloc]init];
-    sharedInstance.minutes = 4;
-    sharedInstance.seconds = 30;
-   
+    
 });
     return sharedInstance;
 }
@@ -33,6 +33,17 @@ dispatch_once(&onceToken, ^{
 -(void)startTimer {
     self.isOn = YES;
     [self checkActive];
+    
+    NSTimeInterval timerLenght = self.minutes * 60 + self.seconds;
+    self.expirationDate = [NSDate dateWithTimeIntervalSinceNow:timerLenght];
+    
+    UILocalNotification *newLocalNotification = [[UILocalNotification alloc]init];
+    newLocalNotification.fireDate = self.expirationDate;
+    newLocalNotification.timeZone = [NSTimeZone defaultTimeZone];
+    newLocalNotification.soundName = UILocalNotificationDefaultSoundName;
+    newLocalNotification.alertBody = @"Time is up!!!";
+    [[UIApplication sharedApplication] scheduleLocalNotification:newLocalNotification];
+    
 }
 
 - (void)endTimer {
@@ -62,6 +73,17 @@ dispatch_once(&onceToken, ^{
 -(void)cancelTimer {
     self.isOn = NO;
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+}
+- (void)prepareForBackground {
+    [[NSUserDefaults standardUserDefaults] setObject:self.expirationDate forKey:@"expirationDate"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+- (void)loadFromBackground {
+    self.expirationDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"expirationDate"];
+    NSTimeInterval seconds = [self.expirationDate timeIntervalSinceNow];
+    self.minutes = seconds / 60;
+    self.seconds = seconds - (self.minutes * 60);
     
 }
 
