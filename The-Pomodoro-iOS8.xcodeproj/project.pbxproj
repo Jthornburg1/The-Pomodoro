@@ -96,16 +96,11 @@
 			children = (
 				34FB5C151A95A83100E3E2F8 /* AppDelegate.h */,
 				34FB5C161A95A83100E3E2F8 /* AppDelegate.m */,
-				87D4376E1B0156CC001F8FC8 /* RoundsController.h */,
-				87D4376F1B0156CC001F8FC8 /* RoundsController.m */,
-				87D437711B0159FF001F8FC8 /* Timer.h */,
-				87D437721B0159FF001F8FC8 /* Timer.m */,
-				87D4376B1B015207001F8FC8 /* RoundsViewController.h */,
-				87D4376C1B015207001F8FC8 /* RoundsViewController.m */,
-				87D4377C1B02A10F001F8FC8 /* AppearanceManager.h */,
-				87D4377D1B02A10F001F8FC8 /* AppearanceManager.m */,
-				87D437661B0151F1001F8FC8 /* TimerViewController.h */,
-				87D437671B0151F1001F8FC8 /* TimerViewController.m */,
+				87D437811B02ECFA001F8FC8 /* Timer */,
+				87D4377F1B02ECB6001F8FC8 /* TimerViewController */,
+				87D437801B02ECC6001F8FC8 /* RoundsViewController */,
+				87D437821B02ED03001F8FC8 /* RoundsController */,
+				87D437831B02ED29001F8FC8 /* Appearance */,
 				87D437681B0151F1001F8FC8 /* TimerViewController.xib */,
 				87D437631B0151CD001F8FC8 /* TimerViewController.h */,
 				34FB5C1E1A95A83100E3E2F8 /* Images.xcassets */,
@@ -139,6 +134,51 @@
 				34FB5C2C1A95A83200E3E2F8 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		87D4377F1B02ECB6001F8FC8 /* TimerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				87D437661B0151F1001F8FC8 /* TimerViewController.h */,
+				87D437671B0151F1001F8FC8 /* TimerViewController.m */,
+			);
+			name = TimerViewController;
+			sourceTree = "<group>";
+		};
+		87D437801B02ECC6001F8FC8 /* RoundsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				87D4376B1B015207001F8FC8 /* RoundsViewController.h */,
+				87D4376C1B015207001F8FC8 /* RoundsViewController.m */,
+			);
+			name = RoundsViewController;
+			sourceTree = "<group>";
+		};
+		87D437811B02ECFA001F8FC8 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				87D437711B0159FF001F8FC8 /* Timer.h */,
+				87D437721B0159FF001F8FC8 /* Timer.m */,
+			);
+			name = Timer;
+			sourceTree = "<group>";
+		};
+		87D437821B02ED03001F8FC8 /* RoundsController */ = {
+			isa = PBXGroup;
+			children = (
+				87D4376E1B0156CC001F8FC8 /* RoundsController.h */,
+				87D4376F1B0156CC001F8FC8 /* RoundsController.m */,
+			);
+			name = RoundsController;
+			sourceTree = "<group>";
+		};
+		87D437831B02ED29001F8FC8 /* Appearance */ = {
+			isa = PBXGroup;
+			children = (
+				87D4377C1B02A10F001F8FC8 /* AppearanceManager.h */,
+				87D4377D1B02A10F001F8FC8 /* AppearanceManager.m */,
+			);
+			name = Appearance;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

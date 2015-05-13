@@ -31,10 +31,9 @@
     
     [[Timer sharedInstance]startTimer];
     self.timerButton.enabled = NO;
-    
 }
 
-//custome init method
+
 
 
 - (void)updateTimerLabel {
@@ -70,9 +69,6 @@
     return timerString;
 }
 #pragma mark -notifications
-
-
-
 
 - (void)registerForNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTimerLabel) name:secondTickNotification object:nil];

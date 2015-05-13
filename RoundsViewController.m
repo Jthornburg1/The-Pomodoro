@@ -58,7 +58,8 @@ static NSString *cellIdentifier = @"cellIdentifier";
 #pragma mark-tableView delegateMethod
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
+    [self.tabBarController setSelectedIndex:0];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     [RoundsController sharedInstance].currentRound = indexPath.row;
     [[RoundsController sharedInstance] roundSelected];
